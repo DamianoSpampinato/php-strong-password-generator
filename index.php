@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/functions.php'; 
 $QLength = isset($_GET['ReqLength']) ? intVal($_GET['ReqLength']): '';
 
 $passwordChar = [
@@ -8,17 +9,11 @@ $passwordChar = [
         '2' => range(1 , 9),
         '3' => ["@","!", "?", "."]
     ];
+
     
 //variabile password
-$password;
-if(!empty($QLength)){
-    for($i =0; $i < $QLength; $i++){
-       $keySelector = rand(1, 3);
-       $charSelector = rand(0, sizeof($passwordChar[$keySelector] )- 1);
-       echo $passwordChar[$keySelector][$charSelector];
-    }
 
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -33,5 +28,8 @@ if(!empty($QLength)){
         <input type="text" name="ReqLength" value="<?php echo $QLength ?>">
         <button type="submit">Invia richiesta</button>
     </form>
+    <?php { ?>
+        <p>La tu password è <?php echo getPassword($QLength, $passwordChar) ?></p>
+    <?php } ?>
 </body>
 </html>
