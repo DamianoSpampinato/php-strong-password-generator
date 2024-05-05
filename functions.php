@@ -10,4 +10,8 @@ function getPassword($length, $passwordChar){
         return $password;
     }
 }
+function clear($QLenght, $ReqLength){
+    $QLenght='';
+    $ReqLength='';
+}
 ?>

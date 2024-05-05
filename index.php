@@ -1,41 +1,48 @@
 <?php
 require_once __DIR__ . '/functions.php'; 
+?>
 
-
-
+<?php
 $QLength = isset($_GET['ReqLength']) ? intVal($_GET['ReqLength']): '';
 
 $passwordChar = [
     
         
-        '1' => range('A','z'),
-        '2' => range(1 , 9),
-        '3' => ["@","!", "?", "."]
-    ];
+    '1' => range('A','z'),
+    '2' => range(1 , 9),
+    '3' => ["@","!", "?", "."]
+];
 
-    
-//variabile password
+        
+        //variabile password
 
 
-
-?>
+        
+        ?>
+        
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Password Generator</title>
-</head>
-<body>
-    <div class="container">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Best Password Generator</title>
+    </head>
+    <body>
+        <h1>Strong password generator</h1>
+        <h2>Genera una password sicura</h2>
         <?php if(!number_format($QLength)){?>
-            <div>
-                Nessun Parametro Valido Inserito
+            <div class="alert">
+                <div>
+                    Nessun Parametro Valido Inserito
+                </div>
+                
             </div>
         <?php } ?>
-        <form action="" method="GET">
-            <input type="text" name="ReqLength" value="<?php echo $QLength ?>">
-            <button type="submit">Invia richiesta</button>
+        <div class="container">
+                <form action="" method="GET">
+                    <input type="text" name="ReqLength" value="<?php echo $QLength != 0 ? $QLength : ''?>">
+                    <button type="submit">Invia richiesta</button>
+                    <button name="ReqLength" <?php clear($QLength, $_GET['ReqLength']) ?> type="submit">Annulla</button>
         </form>
         <div class="password-box">
             <p>La tua password è <?php echo getPassword($QLength, $passwordChar) ?></p>
@@ -45,3 +52,35 @@ $passwordChar = [
     </div>
 </body>
 </html>
+
+
+        <style >
+            body{
+                background-color: #1e2c66;
+                }
+                h1,h2{
+                    text-align:center
+                }
+                h1{
+                    color:gray;
+                }
+                h2{
+                    color:darkgray;
+                }
+
+        .alert{
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: lightblue;
+            color:green;
+            }
+        .container{
+            text-align:center;
+            padding: 20px;
+            width: 500px;
+            margin:15px auto;
+            background-color: white;
+            border-radius: 10px ;
+        }
+        </style>
