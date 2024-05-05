@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/functions.php'; 
+
+
+
 $QLength = isset($_GET['ReqLength']) ? intVal($_GET['ReqLength']): '';
 
 $passwordChar = [
@@ -24,12 +27,21 @@ $passwordChar = [
     <title>Best Password Generator</title>
 </head>
 <body>
-    <form action="" method="GET">
-        <input type="text" name="ReqLength" value="<?php echo $QLength ?>">
-        <button type="submit">Invia richiesta</button>
-    </form>
-    <?php { ?>
-        <p>La tu password è <?php echo getPassword($QLength, $passwordChar) ?></p>
-    <?php } ?>
+    <div class="container">
+        <?php if(!number_format($QLength)){?>
+            <div>
+                Nessun Parametro Valido Inserito
+            </div>
+        <?php } ?>
+        <form action="" method="GET">
+            <input type="text" name="ReqLength" value="<?php echo $QLength ?>">
+            <button type="submit">Invia richiesta</button>
+        </form>
+        <div class="password-box">
+            <p>La tua password è <?php echo getPassword($QLength, $passwordChar) ?></p>
+        </div>
+        
+        
+    </div>
 </body>
 </html>
