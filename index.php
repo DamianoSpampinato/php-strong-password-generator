@@ -40,7 +40,7 @@ $passwordChar = [
         <?php } ?>
         <div class="container">
                 <form action="" method="GET">
-                    <input type="text" name="ReqLength" value="<?php echo $QLength != 0 ? $QLength : ''?>">
+                    <input type="text" name="ReqLength" placeholder="inserisci lunghezza password" value="<?php echo $QLength != 0 ? $QLength : ''?>">
                     <div class="buttons">
                         <button class="bg-blue" type="submit">Invia richiesta</button>
                         <button name="ReqLength" <?php clear($QLength, $_GET['ReqLength']) ?> type="submit">Annulla</button>
