@@ -41,11 +41,13 @@ $passwordChar = [
         <div class="container">
                 <form action="" method="GET">
                     <input type="text" name="ReqLength" value="<?php echo $QLength != 0 ? $QLength : ''?>">
-                    <button type="submit">Invia richiesta</button>
-                    <button name="ReqLength" <?php clear($QLength, $_GET['ReqLength']) ?> type="submit">Annulla</button>
+                    <div class="buttons">
+                        <button class="bg-blue" type="submit">Invia richiesta</button>
+                        <button name="ReqLength" <?php clear($QLength, $_GET['ReqLength']) ?> type="submit">Annulla</button>
+                    </div>
         </form>
         <div class="password-box">
-            <p>La tua password è <?php echo getPassword($QLength, $passwordChar) ?></p>
+            <p>La tua password è : <?php echo getPassword($QLength, $passwordChar) ?></p>
         </div>
         
         
@@ -67,7 +69,20 @@ $passwordChar = [
                 h2{
                     color:darkgray;
                 }
+        
+        button, input{
+            padding: 10px;
+            border-radius: 10px
+        }
+        .buttons{
+            margin-top:10px
+        }
 
+        .bg-blue{
+            background-color: #0d6efd;
+        }
+
+        
         .alert{
             width: 500px;
             margin: 0 auto;
